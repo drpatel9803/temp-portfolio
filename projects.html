@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Deep Patel — Cybersecurity, Python and AI/ML portfolio.">
+  <meta name="theme-color" content="#040911">
+  <title>Projects | Deep Patel</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="page-enter">
+<div class="soc-topbar">
+  <div class="wrap soc-topbar-inner">
+    <span class="status-pill"><span class="pulse-dot"></span>SOC WORKBENCH · STATUS: OPEN TO ROLES</span>
+    <span>ANALYST: DEEP PATEL · AHMEDABAD, IN</span>
+    <span id="soc-clock">2026-11-26 12:00:00 UTC</span>
+  </div>
+</div>
+<header class="site-header"><div class="wrap nav">
+  <a class="brand" href="index.html"><span class="brand-mark">SOC//DP</span>DEEP PATEL</a>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Dashboard</a></li>
+    <li><a href="about.html">Profile</a></li>
+    <li><a href="skills.html">Skills Matrix</a></li>
+    <li><a href="projects.html">Case Studies</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div></header>
+<main>
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <div class="kicker">03 / Selected work</div>
+      <h1>Projects that turn<br><span class="gradient">learning into practice.</span></h1>
+      <p class="intro">A closer look at my cybersecurity and development projects, including the purpose, workflow and technologies used.</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="wrap">
+      <div class="filter-bar reveal" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" type="button" data-filter-btn="all">All Projects (3)</button>
+        <button class="filter-btn" type="button" data-filter-btn="cybersecurity">Cybersecurity</button>
+        <button class="filter-btn" type="button" data-filter-btn="ml">Machine Learning</button>
+      </div>
+
+      <article class="soc-panel reveal" style="margin-bottom:18px" data-category="cybersecurity">
+        <div class="soc-panel-head">
+          <span>PROJECT 01 · CYBERSECURITY / PYTHON</span>
+          <span style="color:var(--green)">FEATURED</span>
+        </div>
+        <div class="soc-panel-body">
+          <h3 style="font-size:1.25rem">Suspicious File Detection &amp; Basic Malware Analysis Tool</h3>
+          <p><strong>Objective:</strong> Automate scanning of a user-selected local directory to identify files with selected executable or script extensions, calculate SHA-256 fingerprints, compare hashes with a predefined sample blacklist and create a scan report.</p>
+
+          <div class="pipeline-strip">
+            <div class="pipe-step"><strong>01 · PATH</strong>Validate target folder</div>
+            <div class="pipe-step"><strong>02 · WALK</strong>Traverse via <code>os.walk()</code></div>
+            <div class="pipe-step"><strong>03 · FILTER</strong>Check script/EXE ext</div>
+            <div class="pipe-step"><strong>04 · HASH</strong>4096-byte <code>SHA-256</code></div>
+            <div class="pipe-step"><strong>05 · LOG</strong>Write <code>scan_report.txt</code></div>
+          </div>
+
+          <div class="grid-2" style="margin-top:18px">
+            <div>
+              <h3>How it works</h3>
+              <ul style="padding-left:19px;color:var(--muted);font-size:0.91rem;margin-top:10px">
+                <li>Accepts a directory path from the user and validates that it exists.</li>
+                <li>Uses <code>os.walk()</code> to recursively traverse folders.</li>
+                <li>Filters files ending in <code>.exe</code>, <code>.bat</code>, <code>.vbs</code>, <code>.ps1</code> and <code>.js</code>.</li>
+                <li>Reads files in binary chunks of 4096 bytes and calculates SHA-256 with <code>hashlib</code>.</li>
+                <li>Compares calculated hashes against a predefined Python set of sample signatures.</li>
+                <li>Writes a timestamped <code>scan_report.txt</code> with file paths, hashes and statuses.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Libraries &amp; concepts</h3>
+              <ul style="padding-left:19px;color:var(--muted);font-size:0.91rem;margin-top:10px">
+                <li><strong>os:</strong> directory traversal and path handling.</li>
+                <li><strong>hashlib:</strong> SHA-256 digest generation.</li>
+                <li><strong>datetime:</strong> report timestamping.</li>
+                <li><strong>Binary file handling:</strong> safe reading of executable content.</li>
+                <li><strong>Set lookup:</strong> efficient hash membership checks.</li>
+              </ul>
+              <div class="callout">The extension filter identifies files for review, not malware by itself. A file is marked blacklisted only when its hash matches an entry in the configured sample blacklist.</div>
+            </div>
+          </div>
+
+          <div class="code-box">
+            <div class="code-header">
+              <span>sha256_chunked.py</span>
+              <button class="copy-btn" type="button" data-copy="sha256-code">Copy snippet</button>
+            </div>
+            <pre class="snippet" id="sha256-code">import hashlib
+
+def sha256_file(path: str, chunk_size: int = 4096) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(chunk_size), b""):
+            h.update(chunk)
+    return h.hexdigest()</pre>
+          </div>
+
+          <div class="tags"><span class="tag">Python</span><span class="tag">os.walk</span><span class="tag">hashlib</span><span class="tag">SHA-256</span><span class="tag">datetime</span><span class="tag">Endpoint triage</span></div>
+        </div>
+      </article>
+
+      <div class="grid-2">
+        <article class="card reveal" data-category="ml">
+          <div class="card-index">PROJECT 02 · MACHINE LEARNING</div>
+          <h3>Integrated Academic Performance &amp; Placement Prediction System</h3>
+          <p>Developed as part of internship/project work to analyse student academic data, estimate performance and predict placement outcomes. The workflow included data preprocessing, Random Forest modelling and integrating predictions into a Django application.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">Scikit-learn</span><span class="tag">Random Forest</span></div>
+        </article>
+        <article class="card reveal" data-category="ml">
+          <div class="card-index">PROJECT 03 · MACHINE LEARNING</div>
+          <h3>Customer Churn Prediction System</h3>
+          <p>Worked on a machine-learning project to analyse customer data and predict potential churn using data preprocessing and classification techniques.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Classification</span></div>
+        </article>
+      </div>
+      <div class="callout reveal">Project note: The suspicious-file scanner uses a predefined sample blacklist. It is a learning and triage project, not a full antivirus product or a live threat-intelligence service.</div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer"><div class="wrap footer-inner">
+  <span>© <span data-year></span> Deep Patel · Built with curiosity and code.</span>
+  <span><a href="index.html">Back to top ↑</a></span>
+</div></footer>
+<script src="assets/script.js"></script>
+</div>
+</body>
+</html>
